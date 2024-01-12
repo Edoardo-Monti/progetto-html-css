@@ -11,10 +11,34 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+        <script type="text/javascript">
+            (function() {
+                emailjs.debug = true;
+                // https://dashboard.emailjs.com/admin/account
+                emailjs.init("k1QWmQ9EsyFTV7OR7");
+            })();
+        </script>
+        <script type="text/javascript">
+            window.onload = function() {
+                document.getElementById('contact-form').addEventListener('submit', function(event) {
+                    event.preventDefault();
+                    // generate a five digit number for the contact_number variable
+                    this.contact_number.value = Math.random() * 100000 | 0;
+                    // these IDs from the previous steps
+                    emailjs.sendForm('service_5a0tcnf', 'template_xfrvhoc', this)
+                        .then(function() {
+                            console.log('SUCCESS!');
+                        }, function(error) {
+                            console.log('FAILED...', error);
+                        });
+                });
+            }
+        </script>
 </head>
 <body>
     
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark position-sticky z-3 w-100">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-transparent bg-dark position-sticky z-3 w-100">
         <div class="container">
             <a class="navbar-brand" href="">Edoardo Monti portfolio</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain"
@@ -43,9 +67,29 @@
             </div>
         </div>
     </nav>
-
-    <h1>Contatacts</h1>
-
+    <video autoplay muted loop id="myVideo">
+        <source src="assets/video/black.pixels2.mp4" type="video/mp4">
+    </video>
+    <div class="container-fluid pt-5 text-light">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Name</label>
+                    <input type="text" name="user_name" class="form-control" id="exampleFormControlInput1" placeholder="Name">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Email address</label>
+                    <input type="email" name="user_email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label">Textarea</label>
+                    <textarea class="form-control" name="message" id="exampleFormControlTextarea1" rows="3"></textarea>
+                </div>
+                <button type="submit" value="Send" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </div>
+    
 
 
 

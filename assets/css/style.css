@@ -20,7 +20,7 @@
     z-index: -1;
 }
 
-.prg-img-1,
+/* .prg-img-1,
 .prg-img-2,
 .prg-img-3 {
     display: none;
@@ -36,4 +36,7 @@
 
 .prg-3:hover ~ .prg-img-3 {
     display: block;
-}
+} */
+
+
+
