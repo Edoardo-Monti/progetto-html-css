@@ -23,8 +23,6 @@
             window.onload = function() {
                 document.getElementById('contact-form').addEventListener('submit', function(event) {
                     event.preventDefault();
-                    // generate a five digit number for the contact_number variable
-                    this.contact_number.value = Math.random() * 100000 | 0;
                     // these IDs from the previous steps
                     emailjs.sendForm('service_5a0tcnf', 'template_xfrvhoc', this)
                         .then(function() {
@@ -73,19 +71,21 @@
     <div class="container-fluid pt-5 text-light">
         <div class="row justify-content-center align-items-center">
             <div class="col-md-6">
-                <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Name</label>
-                    <input type="text" name="user_name" class="form-control" id="exampleFormControlInput1" placeholder="Name" required title="Please enter your name">
-                </div>
-                <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Email address</label>
-                    <input type="email" name="user_email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" required >
-                </div>
-                <div class="mb-3">
-                    <label for="exampleFormControlTextarea1" class="form-label">Textarea</label>
-                    <textarea class="form-control" name="message" id="exampleFormControlTextarea1" rows="3" required ></textarea>
-                </div>
-                <button type="submit" value="Send" class="btn btn-primary">Submit</button>
+                <form id="contact-form">
+                    <div class="mb-3">
+                        <label class="form-label">Name</label>
+                        <input type="text" name="user_name" class="form-control" id="exampleFormControlInput1" placeholder="Name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Email address</label>
+                        <input type="email" name="user_email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" required >
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Textarea</label>
+                        <textarea class="form-control" name="message" id="exampleFormControlTextarea1" rows="3" required ></textarea>
+                    </div>
+                    <button type="submit" value="Send" class="btn btn-primary">Submit</button>
+                </form>
             </div>
         </div>
     </div>
